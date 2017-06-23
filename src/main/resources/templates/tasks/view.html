@@ -16,6 +16,8 @@
             <table class="table">
                 <tr th:each="task : ${tasks}">
                     <td th:text="${task.name}"></td>
+                    <td><a th:href="'/tasks/edit/' + ${task.id}">Edit</a></td>
+
                 </tr>
             </table>
         </div>

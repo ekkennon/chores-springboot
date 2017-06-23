@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -50,5 +47,33 @@ public class TasksController {
         model.addAttribute("tasks", taskDao.findAll());
         return "tasks/view";
         //return "redirect:";
+    }
+
+    @RequestMapping(value="edit/{id}", method=RequestMethod.GET)
+    public String displayEditTask(Model model, @PathVariable int id) {
+        Task task = taskDao.findOne(id);
+        model.addAttribute("title", "Edit " + task.getName());
+        model.addAttribute("task", task);
+        return "tasks/edit";
+    }
+
+    @RequestMapping(value="edit/{id}", method=RequestMethod.POST)
+    public String processEdit(Model model, @ModelAttribute @Valid Task task, Errors errors, @PathVariable int id) {
+        Task t = taskDao.findOne(id);
+        t.setName(task.getName());
+        taskDao.save(t);
+
+        model.addAttribute("title", "Task List");
+        model.addAttribute("tasks", taskDao.findAll());
+        return "tasks/view";
+    }
+
+    @RequestMapping(value="remove/{id}", method=RequestMethod.POST)
+    public String processRemove(Model model, @PathVariable int id) {
+        taskDao.delete(id);
+
+        model.addAttribute("title", "Task List");
+        model.addAttribute("tasks", taskDao.findAll());
+        return "tasks/view";
     }
 }
