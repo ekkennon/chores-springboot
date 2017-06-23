@@ -13,6 +13,11 @@
                     <span th:errors="*{name}" class="error"></span>
                 </div>
 
+                <div class="form-group">
+                    <input placeholder="Due Date (Use Date Picker or enter yyyy-MM-dd)" type="date" class="form-control" th:field="*{dueDate}" />
+                    <span th:errors="*{dueDate}" class="error"></span>
+                </div>
+
                 <input type="submit" value="Add Task" />
             </form>
         </div>
