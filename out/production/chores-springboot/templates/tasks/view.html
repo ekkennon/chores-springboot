@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+</head>
+<body>
+
+<nav th:replace="fragments :: mainnav"></nav>
+
+<div class="container body-content">
+    <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
+    <h2>View All</h2>
+
+    <div th:unless="${tasks} and ${tasks.size()}">
+        <h2>No Results</h2>
+    </div>
+
+    <table class="table">
+
+        <tr>
+            <th>Name</th>
+        </tr>
+
+        <tr th:each="task : ${tasks}">
+            <td th:text="${task.name}"></td>
+        </tr>
+
+    </table>
+</div>
+
+<nav th:replace="fragments :: tasknav"></nav>
+
+</body>
+</html>

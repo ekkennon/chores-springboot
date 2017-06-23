@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+
+<head th:fragment="head">
+
+    <!-- Bootstrap stylesheets and script -->
+    <meta charset="UTF-8"/>
+    <title th:text="${title}">TaskList</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+<nav th:fragment="mainnav" class="navbar navbar-inverse">
+    <a href="/">Home</a>
+</nav>
+
+<nav th:fragment="tasknav">
+    <a href="/tasks/view">View Tasks</a> |
+    <a href="/tasks/add">Add Task</a>
+</nav>
+
+</body>
+</html>

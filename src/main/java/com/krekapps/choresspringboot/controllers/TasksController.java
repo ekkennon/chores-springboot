@@ -39,12 +39,16 @@ public class TasksController {
     }
 
     @RequestMapping(value="add", method=RequestMethod.POST)
-    public String processAdd(Model model, @ModelAttribute @Valid Task task, Errors errors, @RequestParam int id) {
+    public String processAdd(Model model, @ModelAttribute @Valid Task task, Errors errors) {
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Task");
             return "tasks/add";
         }
 
-        return "redirect:";
+        taskDao.save(task);
+        model.addAttribute("title", "Task List");
+        model.addAttribute("tasks", taskDao.findAll());
+        return "tasks/view";
+        //return "redirect:";
     }
 }
