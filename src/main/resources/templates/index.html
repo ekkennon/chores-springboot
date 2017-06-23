@@ -1,18 +1,17 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head">
-</head>
-<body>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+    <head th:replace="fragments :: head"></head>
+    <body>
 
-<nav th:replace="fragments :: mainnav"></nav>
+        <div th:replace="fragments :: page-header"></div>
 
-<div class="container body-content">
-    <h1>Chores with Spring Boot and JPA</h1>
+        <div class="container body-content">
+            <h2>Chores with Spring Boot and JPA</h2>
 
-    <ul>
-        <li><a th:href="@{/tasks/view}">View Tasks</a></li>
-    </ul>
-</div>
+            <ul>
+                <li><a th:href="@{/tasks/view}">View Tasks</a></li>
+            </ul>
+        </div>
 
-</body>
+    </body>
 </html>
