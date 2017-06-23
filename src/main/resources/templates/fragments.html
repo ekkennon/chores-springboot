@@ -4,27 +4,23 @@
 <head th:fragment="head">
 
     <!-- Bootstrap stylesheets and script -->
-    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
-    <link th:href="@{/css/techjobs.css}" rel="stylesheet" />
-    <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
+    <meta charset="UTF-8"/>
+    <title th:text="${title}">TaskList</title>
 
-    <title th:text="'TaskList' + ${title == null ? '' : ' :: ' + title}">TaskList</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 <body>
 
-<div th:fragment="page-header" class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <a th:href="@{/}" class="navbar-brand">TaskList</a>
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li><a th:href="@{/tasks/view}"> View Task List</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
+<nav th:fragment="mainnav" class="navbar navbar-inverse">
+    <a href="/">Home</a>
+</nav>
+
+<nav th:fragment="tasknav">
+    <a href="/tasks/view">View Tasks</a> |
+    <a href="/tasks/add">Add Task</a>
+</nav>
 
 </body>
 </html>

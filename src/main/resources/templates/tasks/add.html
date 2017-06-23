@@ -6,9 +6,9 @@
 
 <nav th:replace="fragments :: mainnav"></nav>
 
-<form method="post" style="max-width:600px;" th:object="${field}">
+<form method="post" style="max-width:600px;" th:object="${task}">
     <div class="form-group">
-        <input placeholder="Name" required class="form-control" th:field="*{name}" />
+        <input placeholder="Name" class="form-control" th:field="*{name}" required="required"/>
         <span th:errors="*{name}" class="error"></span>
     </div>
 
